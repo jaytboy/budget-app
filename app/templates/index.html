@@ -1,0 +1,31 @@
+{% extends "base.html"%}
+
+{% block content %}
+	<h1>Welcome!</h1>
+	<p>TODO:</p>
+	<ul>
+		<li>Set up the user database and authentication. <a href="https://blog.miguelgrinberg.com/post/the-flask-mega-tutorial-part-v-user-logins">User logins</a> and <a href="https://blog.miguelgrinberg.com/post/the-flask-mega-tutorial-part-x-email-support">Email Support</a></li>
+		<li><a href="https://blog.miguelgrinberg.com/post/the-flask-mega-tutorial-part-xv-a-better-application-structure">Restructure</a> the app.</li>
+		<li>Queue <a href="https://blog.miguelgrinberg.com/post/the-flask-mega-tutorial-part-xxii-background-jobs">background tasks</a>.</li>
+		<li>Make possible to upload <a href="https://wtforms.readthedocs.io/en/2.3.x/fields/?highlight=file#wtforms.fields.MultipleFileField">multiple files</a> at the same time.</li>
+		<li>Make it look pretty! Learn bootstrap</li>
+		<li>Use <a href="https://blog.miguelgrinberg.com/post/the-flask-mega-tutorial-part-xiv-ajax">Ajax</a>.</li>
+		<li><a href="https://realpython.com/python-virtual-environments-a-primer/#pin-your-dependencies">Migrate</a> development app to new computer.</li>
+		<li><a href="https://blog.miguelgrinberg.com/post/the-flask-mega-tutorial-part-xvii-deployment-on-linux">Deploy linux server</a>.</li>
+	</ul>
+	<hr>
+	<table>
+		{% for year in years %}
+		<tr>
+			<td>{{ year }}</td>
+			<td></td>
+		</tr>
+		{% for month in years[year] %}
+		<tr>
+			<td></td>
+			<td><a href="{{ url_for('transactions', month=month, year=year) }}">{{ month }}</a></td>
+		</tr>
+		{% endfor %}
+		{% endfor %}
+	</table>
+{% endblock %}

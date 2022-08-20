@@ -1,0 +1,23 @@
+{% extends "base.html"%}
+
+{% block content %}
+	<h1>Upload Transactions!</h1>
+    <hr>
+    <form method="POST" enctype="multipart/form-data" novalidate>
+        {{ form.hidden_tag() }}
+        <p>
+            {{ form.bankName.label }} {{ form.bankName }}
+        </p>
+        <p>
+            {{ form.accountName.label }} {{ form.accountName }}
+        </p>
+        <p>
+            {{ form.upload }}<br>
+            {% for error in form.upload.errors %}
+            <span style="color: red;">[{{ error }}]</span>
+            {% endfor %}
+        </p>
+        <p>{{ form.submit() }}</p>
+    </form>
+    
+{% endblock %}

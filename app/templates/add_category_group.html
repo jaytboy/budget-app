@@ -1,0 +1,28 @@
+{% extends "base.html"%}
+
+{% block content %}
+	<h1>Add Category Group</h1>
+	<hr>
+	<table>
+ 	<tr>
+	    <th>Group</th>
+ 	</tr>
+	{% for g in groups %}
+		<tr>
+    	  <td>{{ g.group }}</td>
+  		</tr>
+	{% endfor %}
+  </table>
+  <hr>
+	<form method="POST" novalidate>
+		{{ form.hidden_tag() }}
+		<p>
+			{{ form.group.label }}<br>
+			{{ form.group(size=32) }}<br>
+            {% for error in form.group.errors %}
+            <span style="color: red;">[{{ error }}]</span>
+            {% endfor %}
+		</p>
+		<p>{{ form.submit() }}</p>
+	</form>
+{% endblock %}

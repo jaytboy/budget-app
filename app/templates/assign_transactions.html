@@ -1,0 +1,36 @@
+{% extends "base.html"%}
+
+{% block content %}
+	<h1>Assign Transactions!</h1>
+	<hr>
+		  <table>
+		  	<tr>
+		  		<th>Date</th>
+		  		<th>Transaction Type</th>
+		  		<th>Amount</th>
+		  		<th>Description</th>
+		  		<th>Category</th>
+		  	</tr>
+		  	{% for t in trans %}
+		  	<tr>
+		  		<td>{{ t.post_date }}</td>
+		  		<td>{{ t.transaction_type }}</td>
+		  		<td>{{ t.amount }}</td>
+		  		<td>{{ t.description }}</td>
+		  		<td><form style="display: inline;" method="POST" novalidate>
+		  			{{ form.hidden_tag() }}
+		  			{{ form.transactionId(style="visibility: hidden; width: 0;", value=t.transaction_id)}}
+		  			{% for error in form.transactionId.errors %}
+            		<span style="color: red;">[{{ error }}]</span>
+            		{% endfor %}
+		  			{{ form.category() }}
+		  			{% for error in form.category.errors %}
+            		<span style="color: red;">[{{ error }}]</span>
+            		{% endfor %}
+            		{{ form.submit() }}
+		  		</form></td>
+		  	</tr>
+		  	{% endfor %}
+		  </table>
+	</div>
+{% endblock %}

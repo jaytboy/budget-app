@@ -1,0 +1,31 @@
+{% extends "base.html"%}
+
+{% block content %}
+	<h1>Add Category</h1>
+	<form action="" method="POST" novalidate>
+		{{ form.hidden_tag() }}
+		<p>
+			{{ form.group.label }}<br>
+			{{ form.group }}
+		</p>
+		<p>
+			{{ form.category.label }}<br>
+			{{ form.category(size=32) }}
+		</p>
+		<p>{{ form.submit() }}</p>
+	</form>
+	<hr>
+	<table>
+ 	<tr>
+	    <th>Group</th>
+	    <th>Category</th>
+ 	</tr>
+	{% for cat in cats %}
+		<tr>
+    	  <td>{{ cat.group.group }}</td>
+    	  <td>{{ cat.category }}</td>
+  		</tr>
+	{% endfor %}
+  </table>
+  <hr>
+{% endblock %}

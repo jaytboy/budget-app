@@ -1,0 +1,38 @@
+{% extends "base.html"%}
+
+{% block content %}
+	<h1>Add Bank Account</h1>
+	<hr>
+	<table>
+ 	<tr>
+	    <th>Bank Name</th>
+	    <th>Account Name</th>
+	    <th>Account Number</th>
+ 	</tr>
+	{% for bank in banks %}
+		<tr>
+    	  <td>{{ bank.name_bank }}</td>
+    	  <td>{{ bank.name_account }}</td>
+    	  <td>{{ bank.account_number}}</td>
+  		</tr>
+	{% endfor %}
+  </table>
+  <hr>
+	<form action="" method="POST" novalidate>
+		{{ form.hidden_tag() }}
+		<p>
+			{{ form.bankName.label }}<br>
+			{{ form.bankName(size=64) }}
+		</p>
+		<p>
+			{{ form.accountName.label }}<br>
+			{{ form.accountName(size=64) }}
+		</p>
+		<p>
+			{{ form.accountNumber.label }}<br>
+			{{ form.accountNumber(size=4) }}
+		</p>
+		<p>{{ form.submit() }}</p>
+	</form>
+  <hr>
+{% endblock %}

@@ -1,0 +1,35 @@
+{% extends "base.html"%}
+
+{% block content %}
+	<h1>Create budget for {{ month }}, {{ year }}</h1>
+	<hr>
+	<p>Start with an average of the past 6 months actual spending then make editable.</p>
+	<form action="" method="POST" novalidate>
+		{{ forms.hidden_tag() }}
+		<table>
+			<tr>
+				<th>Group</th>
+				<th>Category</th>
+				<th>Budget Amount</th>
+			</tr>
+			{% for g in groups %}
+			<tr>
+				<td><b>{{ g.group }}</b></td>
+				<td></td>
+				<td></td>
+			</tr>
+			{% for c in cats %}
+			{% if c.group.group == g.group%}
+			<tr>
+				<td></td>
+				<td>{{ c.category }}</td>
+				<td><input id="{{ c.category }}" name="{{ c.category }}" type="text" placeholder={{ averageAmount[c.category] }}></td>
+			</tr>
+			{% endif %}
+			{% endfor %}
+			{% endfor %}
+		</table>
+		<p><input id="submit" name="submit" type="submit" value="Submit"></p>
+	</form>
+  <hr>
+{% endblock %}

@@ -1,0 +1,50 @@
+{% extends "base.html"%}
+
+{% block content %}
+	<h1>Split Transaction</h1>
+	<hr>
+	<table>
+		<tr>
+			<th>Group</th>
+			<th>Category</th>
+			<th>Post Date</th>
+			<th>Description</th>
+			<th>Transaction Type</th>
+			<th>Amount</th>
+		</tr>
+		{% for g in groups %}
+		<tr>
+			<td><b>{{ g.group }}</b></td>
+			<td></td>
+			<td></td>
+			<td></td>
+			<td></td>
+			<td><b>{{ totals["group"][g.group] }}</b></td>
+		</tr>
+		{% for c in cats %}
+		{% if c.group.group == g.group %}
+		<tr>
+			<td></td>
+			<td><b>{{ c.category }}</b></td>
+			<td></td>
+			<td></td>
+			<td></td>
+			<td><b>{{ totals["category"][c.category] }}</b></td>
+		</tr>
+		{% for a in catAmounts %}
+		{% if a.category.category == c.category %}
+		<tr>
+			<td></td>
+			<td></td>
+			<td>{{ a.transaction.post_date }}</td>
+			<td>{{ a.transaction.description }}</td>
+			<td>{{ a.transaction.transaction_type }}</td>
+			<td>{{ a.amount }}</td>
+		</tr>
+		{% endif %}
+		{% endfor %}
+		{% endif %}
+		{% endfor %}
+		{% endfor %}
+	</table>
+{% endblock %}

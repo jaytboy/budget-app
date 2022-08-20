@@ -1,0 +1,30 @@
+{% extends "base.html"%}
+
+{% block content %}
+	<h1>Budget for {{ month }}, {{ year }}</h1>
+	<hr>
+	<table>
+		<tr>
+			<th>Group</th>
+			<th>Category</th>
+			<th>Budget Amount</th>
+		</tr>
+		{% for g in groups %}
+		<tr>
+			<td><b>{{ g.group }}</b></td>
+			<td></td>
+			<td></td>
+		</tr>
+		{% for c in cats %}
+		{% if c.group.group == g.group%}
+		<tr>
+			<td></td>
+			<td>{{ c.category }}</td>
+			<td>{{ budget[c.category]}}</td>
+		</tr>
+		{% endif %}
+		{% endfor %}
+		{% endfor %}
+	</table>
+  <hr>
+{% endblock %}

@@ -1,0 +1,35 @@
+{% extends "base.html"%}
+
+{% block content %}
+	<h1>Create file processing map to database.</h1>
+	<hr>
+	<form action="" method="POST" novalidate>
+		{{ form.hidden_tag() }}
+		<p>
+			{{ form.transactionId.label }}<br>
+			{{ form.transactionId }}
+		</p>
+		<p>
+			{{ form.postDate.label }}<br>
+			{{ form.postDate }}
+		</p>
+		<p>
+			{{ form.dateFormat.label }}<br>
+			{{ form.dateFormat }}
+		</p>
+		<p>
+			{{ form.transactionType.label }}<br>
+			{{ form.transactionType }}
+		</p>
+		<p>
+			{{ form.amount.label }}<br>
+			{{ form.amount }}
+		</p>
+		<p>
+			{{ form.description.label }}<br>
+			{{ form.description }}
+		</p>
+		<p>{{ form.submit() }}</p>
+	</form>
+  <hr>
+{% endblock %}

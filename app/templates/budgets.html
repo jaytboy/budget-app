@@ -1,0 +1,28 @@
+{% extends "base.html"%}
+
+{% block content %}
+  <h1>Budgets</h1>
+  <hr>
+  <p>List all budgets here with links. All budgets after 1 month after the current are read only. Links to editable months from 1 month before current month to 6 months from now. Start with an average of the past 6 months actual spending then make editable.</p>
+  <table>
+    {% for year in years %}
+    <tr>
+      <td>{{ year }}</td>
+      <td></td>
+    </tr>
+    {% for date in dates %}
+    {% if date[1].year == year %}
+    <tr>
+      <td></td>
+      <td><a href="{{ url_for(date[0], month=date[1].month, year=year) }}">{{ date[2] }}</a></td>
+    </tr>
+    {% endif %}
+    {% endfor %}
+    {% endfor %}
+    <tr>
+      <td></td>
+      <td>Next Month: <a href="{{ url_for(future[0], month=future[1].month, year=future[1].year) }}">{{ future[2] }}</a></td>
+    </tr>
+  </table>
+  <hr>
+{% endblock %}

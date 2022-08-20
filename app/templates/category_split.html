@@ -1,0 +1,16 @@
+{% extends "base.html"%}
+
+{% block content %}
+	<h1>Split Transaction</h1>
+	<hr>
+	<p>Amount: <b>{{ t.amount }}</b></p>
+	<hr>
+	<form method="POST" novalidate>
+		{{ form.hidden_tag() }}
+		{{ form.assignment()}}
+		{% for error in form.assignment.errors %}
+            <span style="color: red;">[{{ error }}]</span>
+            {% endfor %}
+		{{ form.submit() }}
+	</form>
+{% endblock %}

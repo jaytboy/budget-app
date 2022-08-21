@@ -24,13 +24,13 @@
 <body>
 	<nav>
 		<ul>
-			<li><a href="{{ url_for('index') }}">Home</a></li>
-			<li><a href="{{ url_for('add_bank_account') }}">Add Bank Account</a></li>
-			<li><a href="{{ url_for('transactions_assign') }}">Assign Transactions a Category</a></li>
-			<li><a href="{{ url_for('upload') }}">Upload Transactions</a></li>
-			<li><a href="{{ url_for('add_category') }}">Add Category</a></li>
-			<li><a href="{{ url_for('add_category_group') }}">Add Category Group</a></li>
-			<li><a href="{{ url_for('budgets') }}">Budgets</a></li>
+			<li><a href="{{ url_for('main.index') }}">Home</a></li>
+			<li><a href="{{ url_for('main.add_bank_account') }}">Add Bank Account</a></li>
+			<li><a href="{{ url_for('main.transactions_assign') }}">Assign Transactions a Category</a></li>
+			<li><a href="{{ url_for('upload.upload') }}">Upload Transactions</a></li>
+			<li><a href="{{ url_for('main.add_category') }}">Add Category</a></li>
+			<li><a href="{{ url_for('main.add_category_group') }}">Add Category Group</a></li>
+			<li><a href="{{ url_for('main.budgets') }}">Budgets</a></li>
 		</ul>
 	</nav>
 	<hr>

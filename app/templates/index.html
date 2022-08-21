@@ -23,7 +23,7 @@
 		{% for month in years[year] %}
 		<tr>
 			<td></td>
-			<td><a href="{{ url_for('transactions', month=month, year=year) }}">{{ month }}</a></td>
+			<td><a href="{{ url_for('main.transactions', month=month, year=year) }}">{{ month }}</a></td>
 		</tr>
 		{% endfor %}
 		{% endfor %}

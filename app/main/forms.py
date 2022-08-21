@@ -1,9 +1,13 @@
+from app import create_app
 from flask_wtf import FlaskForm
-from app.models import Category, BankAccount
 from flask_wtf.file import FileField, FileAllowed, FileRequired
 from wtforms import StringField, SelectField, SubmitField, HiddenField, FormField, FieldList, DecimalField
 from wtforms.validators import DataRequired, Length
 from werkzeug.utils import secure_filename
+from app.models import Category
+
+app = create_app()
+app.app_context().push()
 
 cat1 = [('-', '-')]
 
@@ -73,5 +77,3 @@ class BudgetForm(FlaskForm):
 
 for c in Category.query.order_by('id'):
 	setattr(BudgetForm, c.category, StringField(c.category))
-	
-	

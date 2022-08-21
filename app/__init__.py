@@ -1,16 +1,25 @@
 from flask import Flask
-from config import Config
 from flask_sqlalchemy import SQLAlchemy
+from config import Config
 from flask_migrate import Migrate
-from celery import Celery
 
-app = Flask(__name__)
-app.config.from_object(Config)
-db = SQLAlchemy(app)
-migrate = Migrate(app, db)
+db = SQLAlchemy()
+migrate = Migrate()
 
-# Celery init
-celery = Celery(app.name, broker=app.config['CELERY_BROKER_URL'])
-celery.conf.update(app.config)
+def create_app(config_class=Config):
+	app = Flask(__name__)
+	app.config.from_object(config_class)
 
-from app import routes, models
+	db.init_app(app)
+	migrate.init_app(app, db)
+
+	from app.upload import bp as upload_bp
+	app.register_blueprint(upload_bp, url_prefix='/upload')
+
+	from app.main import bp as main_bp
+	app.register_blueprint(main_bp)
+
+
+	return app
+
+from app import models
